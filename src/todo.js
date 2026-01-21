@@ -14,7 +14,10 @@ export class Todo {
         console.log(`[P${this.priority}] ${this.title}`);
         console.log(`Due Date: ${this.dueDate}`);
         console.log(this.description);
-        console.log(`Status: ${this.complete}`);
+        if(this.complete) 
+            console.log(`Status: Done`);
+        else
+            console.log("Status: To Do");
         console.log(`Task ID ${this.taskId}`);
     }
 
