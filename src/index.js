@@ -14,6 +14,19 @@ const ProjectList = (() => {
     return {createProject};
 })();
 
+const addTaskBtn = document.querySelector(".addtaskbtn");
+
+addTaskBtn.addEventListener("click", () => {
+    const addTaskModal = document.querySelector("#addtaskmodal");
+    if(addTaskModal.open === false)
+        addTaskModal.show();
+    else
+        addTaskModal.close();
+})
+
+
+
+
 const proj1 = ProjectList.createProject("default");
 
 proj1.addTodo("Shop dinner", 0, "Buy food for dinner", "25th Jan, 2026");
