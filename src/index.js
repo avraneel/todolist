@@ -3,6 +3,7 @@
 import { Project } from "./project.js"
 
 const plist = document.querySelector(".projectlist");
+const addTaskModal = document.querySelector("#addtaskmodal");
 
 // ProjectList stores the arrow function that returns an object,
 // thus making ProjectList an object
@@ -37,7 +38,6 @@ const ProjectList = (() => {
 const addTaskBtn = document.querySelector(".addtaskbtn");
 
 addTaskBtn.addEventListener("click", () => {
-    const addTaskModal = document.querySelector("#addtaskmodal");
     if(addTaskModal.open === false)
         addTaskModal.show();
     else
@@ -59,5 +59,24 @@ proj1.addTodo("Finish homework", 0, "Solve all 50 math problems", "2nd Jan, 2026
 
 //proj1.displayProject();
 
-const projdiv = proj1.renderProject();
-plist.appendChild(projdiv);
+// const projdiv = proj1.renderProject();
+// plist.appendChild(projdiv);
+
+const submitbtn = document.querySelector(".submitbtn");
+submitbtn.addEventListener("click", getFormData);
+
+// Tricky part
+function getFormData() {
+    const title = document.querySelector("#title").value;
+    const priority = document.querySelector("#priority").value;
+    const description = document.querySelector("#description").value;
+    console.log(description);
+    const duedate = document.querySelector("#duedate").value;
+    proj1.addTodo(title, priority, description, duedate);
+    const projdiv2 = proj1.renderProject();
+    plist.appendChild(projdiv2);
+    addTaskModal.close();
+}
+
+const projdiv2 = proj1.renderProject();
+plist.appendChild(projdiv2);
