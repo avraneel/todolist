@@ -30,13 +30,18 @@ export class Todo {
         const title = document.createElement("p");
         title.textContent = this.title;
 
+        const descelement = document.createElement("details");
+        const summary = document.createElement("summary");
+        summary.textContent = "Description";
+        descelement.appendChild(summary);
         const description = document.createElement("p");
         description.textContent = this.description;
+        descelement.appendChild(description);
         
         const date = document.createElement("p");
         date.textContent = this.dueDate;
         
-        todoContainer.append(title, description, date);
+        todoContainer.append(title, descelement, date);
 
         return todoContainer;
     }
