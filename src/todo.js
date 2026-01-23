@@ -1,5 +1,7 @@
 "use strict";
 
+const plist = document.querySelector(".projectlist");
+
 export class Todo {
     constructor(title, priority, description, dueDate) {
         this.title = title;
@@ -19,6 +21,24 @@ export class Todo {
         else
             console.log("Status: To Do");
         console.log(`Task ID ${this.taskId}`);
+    }
+
+    renderTodo() {
+        const todoContainer = document.createElement("div");
+        todoContainer.classList.toggle("todo");
+
+        const title = document.createElement("p");
+        title.textContent = this.title;
+
+        const description = document.createElement("p");
+        description.textContent = this.description;
+        
+        const date = document.createElement("p");
+        date.textContent = this.dueDate;
+        
+        todoContainer.append(title, description, date);
+
+        return todoContainer;
     }
 
     markComplete() {
