@@ -70,7 +70,6 @@ function getFormData() {
     const title = document.querySelector("#title").value;
     const priority = document.querySelector("#priority").value;
     const description = document.querySelector("#description").value;
-    console.log(description);
     const duedate = document.querySelector("#duedate").value;
     proj1.addTodo(title, priority, description, duedate);
     const projdiv2 = proj1.renderProject();
