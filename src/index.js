@@ -73,6 +73,7 @@ function getFormData() {
     const duedate = document.querySelector("#duedate").value;
     proj1.addTodo(title, priority, description, duedate);
     const projdiv2 = proj1.renderProject();
+    plist.innerHTML = "";
     plist.appendChild(projdiv2);
     addTaskModal.close();
 }
