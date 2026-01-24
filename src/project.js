@@ -1,6 +1,6 @@
 "use strict";
 
-import Todo from "./ToDo.js";
+import Todo from "./Task.js";
 
 export default class Project {
     constructor(name) {

@@ -4,26 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="mainapp">
-        <div class="project-area vert-list">
-            <button type="button" class="addprojbtn btn" id="open-project-modal">&plus; Create Project</button>
+        <div class="project-area">
+            <button type="button" id="open-project-modal" class="btn">&plus; Create Project</button>
             <dialog id="project-modal">
                 <form method="dialog">
-                    <div class="close-project-modal">&times;</div>
+                    <div id="close-project-modal">&times;</div>
                     <label for="project-name">Name Your Project</label>
                     <input type="text" name="project-name" id="project-name">
                     <button type="button" class="create-project-btn btn">Submit Project</button>
                 </form>
             </dialog>
-            <nav class="projectnav"></nav>
+            <nav class="project-list"></nav>
         </div>
         <div class="todo-area">
-            <button type="button" class="addtaskbtn btn">&plus; Create Task</button>
-            <div class="content"></div>
+            <button type="button" id="create-task-btn" class="btn">&plus; Create Task</button>
             <dialog class="modal" id="todo-modal">
-                <form>
+                <form method="dialog">
                     <div class="close-todo-btn">&times;</div>
                     <h2>Add a Task</h2>
                     <div class="form-item">
@@ -45,15 +45,13 @@
                         <input type="date" name="duedate" id="duedate">
                     </div>
                     <div class="form-item">
-                        <label for="descripton">Description</label>
+                        <label for="description">Description</label>
                         <textarea name="description" id="description"></textarea>
                     </div>
-                    
-
-
                     <button type="button" class="createtodobtn btn">Submit Task</button>
                 </form>
             </dialog>
+            <div class="project-content"></div>
         </div>
     </div>
 </body>
