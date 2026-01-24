@@ -70,7 +70,6 @@ function getToDoData() {
     const duedate = document.querySelector("#duedate").value;
     const project = projectListElement.projectList.find(el => el.name === projname);
     project.addTodo(title, priority, description, duedate);
-    console.log(projname, title, priority, description, duedate);
     display();
     addTaskModal.close();
     }
