@@ -4,7 +4,7 @@ import projectListElement from "./contentlist";
 import "./style.css";
 
 const content = document.querySelector(".content");
-const projectNav = document.querySelector(".projectnav");
+
 
 const projNavItem = document.createElement("div");
 projNavItem.classList.toggle("project-nav-item");
@@ -33,17 +33,6 @@ function createSelect() {
         option.textContent = el.name;
         select.appendChild(option);
     });
-}
-
-function getProjData() {
-    const projname = document.querySelector("#project-name").value;
-    const projNavItem = document.createElement("div");
-    projNavItem.classList.toggle(".project-nav-item");
-    projNavItem.textContent = projname;
-    projectListElement.createProject(projname);
-    createSelect();
-    display();
-    addProjModal.close();
 }
 
 addTaskBtn.addEventListener("click", () => {
