@@ -9,10 +9,10 @@
 <body>
     <div class="mainapp">
         <div class="project-area">
-            <button type="button" id="open-project-modal" class="btn">&plus; Create Project</button>
-            <dialog id="project-modal">
+            <button type="button" class="open-project-modal btn">&plus; Create Project</button>
+            <dialog class="project-modal">
                 <form method="dialog">
-                    <div id="close-project-modal">&times;</div>
+                    <div class="close-project-modal">&times;</div>
                     <label for="project-name">Name Your Project</label>
                     <input type="text" name="project-name" id="project-name">
                     <button type="button" class="create-project-btn btn">Submit Project</button>
@@ -21,8 +21,8 @@
             <nav class="project-list"></nav>
         </div>
         <div class="todo-area">
-            <button type="button" id="create-task-btn" class="btn">&plus; Create Task</button>
-            <dialog class="modal" id="todo-modal">
+            <button type="button" class="create-task-btn btn">&plus; Create Task</button>
+            <dialog class="todo-modal">
                 <form method="dialog">
                     <div class="close-todo-btn">&times;</div>
                     <h2>Add a Task</h2>
