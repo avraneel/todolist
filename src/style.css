@@ -1,7 +1,158 @@
-ul {
-    list-style-type: none;
+@font-face {
+    font-family: 'Figtree';
+    src: url('./assets/fonts/Figtree-Light.woff2') format('woff2'),
+        url('./assets/fonts/Figtree-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
 }
 
-.project {
-    border: 1px solid black;
+@font-face {
+    font-family: 'Manrope';
+    src: url('./assets/fonts/Manrope-ExtraLight.woff2') format('woff2'),
+        url('./assets/fonts/Figtree-Light.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+*:not(dialog) {
+    margin: 0;
+}
+
+:root {
+    --color-1: #6832ff;
+    --color-2: #ff298d;
+    --gradient: linear-gradient(var(--color-1), var(--color-2));
+}
+
+body {
+    height: 100vh;
+    background: var(--gradient);
+}
+
+.mainapp {
+    background: #eeeaea;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 5px 6px 20px rgb(80, 80, 80);
+    margin: 6em;
+    padding: 3rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.btn {
+    border: none;
+    padding: 1em;
+    color: white;
+    border-radius: 10px;
+    font-family: "Figtree";
+    background: var(--color-1);
+    transition: 0.3s;
+}
+
+.addprojbtn, .addtaskbtn {
+    font-size: 1.3rem;
+}
+
+:modal {
+    background-color: #b296ff;
+    border: none;
+    border-radius: 20px;
+    padding: 3rem;
+    font-size: 2rem;
+    transition: 0.3s;
+}
+
+:modal > form {
+    display: flex;
+    flex-direction: column;
+}
+
+#project-name {
+    border:none;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}
+
+#project-modal > form {
+    font-family: "Manrope";
+    gap: 20px;
+    align-items: start;
+}
+
+#project-modal button {
+    border-radius: 10px;
+    font-size: 1.3rem;
+    padding: 1rem;
+}
+
+#todo-modal form {
+    font-family: "Manrope";
+    gap: 20px;
+}
+
+#todo-modal label {
+    width: 12rem;
+    display: inline-block;
+}
+
+#select, #title, #priority, #duedate, #description {
+    border:none;
+    font-family: "Manrope";
+    border-radius: 10px;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+}
+
+.project-area, .todo-area {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.projectnav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-nav-item {
+    font-family: "Manrope";
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 10px;
+}
+
+.project-nav-item:hover {
+    background-color: #bebdbd;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+#todo-modal button {
+    font-size: 1.3rem;
+}
+
+.btn:hover {
+    background: var(--color-2);
+    cursor: pointer;
+}
+
+.close-project-btn:hover, .close-todo-btn:hover {
+    cursor: pointer;
+}
+
+.todo {
+    font-family: "Manrope";
+    font-size: 1.3rem;
 }

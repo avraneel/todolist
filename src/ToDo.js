@@ -16,23 +16,19 @@ export default class Todo {
 
     renderTodo() {
         const todoContainer = document.createElement("div");
-        todoContainer.classList.toggle("todo");
-
-        const title = document.createElement("p");
-        title.textContent = this.title;
 
         const descelement = document.createElement("details");
         const summary = document.createElement("summary");
-        summary.textContent = "Description";
+        summary.textContent = this.title;
         descelement.appendChild(summary);
         const description = document.createElement("p");
         description.textContent = this.description;
         descelement.appendChild(description);
         
         const date = document.createElement("p");
-        date.textContent = this.dueDate;
+        date.textContent = "Due: " + this.dueDate;
         
-        todoContainer.append(title, descelement, date);
+        todoContainer.append(descelement, date);
 
         return todoContainer;
     }

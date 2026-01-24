@@ -4,17 +4,18 @@ import projectListElement from "./contentlist";
 import "./style.css";
 
 const content = document.querySelector(".content");
+const projectNav = document.querySelector(".projectnav");
 
-const addProjBtn = document.querySelector(".addprojbtn");
-const addProjModal = document.querySelector("#addprojmodal");
-const createProjBtn = document.querySelector(".createprojbtn");
-
-projectListElement.createProject("default");
+const projNavItem = document.createElement("div");
+projNavItem.classList.toggle("project-nav-item");
+projNavItem.textContent = "Default";
+projectListElement.createProject("Default");
+projectNav.appendChild(projNavItem);
 createSelect();
-display();
 
 const addTaskBtn = document.querySelector(".addtaskbtn");
-const addTaskModal = document.querySelector("#addtaskmodal");
+const closeTodoBtn = document.querySelector(".close-todo-btn");
+const addTaskModal = document.querySelector("#todo-modal");
 const createTodoBtn = document.querySelector(".createtodobtn");
 
 function display() {
@@ -34,18 +35,11 @@ function createSelect() {
     });
 }
 
-addProjBtn.addEventListener("click", () => {
-    if(addProjModal.open == false)
-        addProjModal.show();
-    else
-        addProjModal.close();
-});
-
-createProjBtn.addEventListener("click", getProjData);
-
 function getProjData() {
-    const projname = document.querySelector("#projname").value;
-    console.log(`got value ${projname}`);
+    const projname = document.querySelector("#project-name").value;
+    const projNavItem = document.createElement("div");
+    projNavItem.classList.toggle(".project-nav-item");
+    projNavItem.textContent = projname;
     projectListElement.createProject(projname);
     createSelect();
     display();
@@ -53,11 +47,12 @@ function getProjData() {
 }
 
 addTaskBtn.addEventListener("click", () => {
-    if(addTaskModal.open == false)
-        addTaskModal.show();
-    else
-        addTaskModal.close();
+    addTaskModal.showModal();
 });
+
+closeTodoBtn.addEventListener("click", () => {
+    addTaskModal.close();
+})
 
 createTodoBtn.addEventListener("click", getToDoData);
 
@@ -72,7 +67,7 @@ function getToDoData() {
     project.addTodo(title, priority, description, duedate);
     display();
     addTaskModal.close();
-    }
+}
 
 
 

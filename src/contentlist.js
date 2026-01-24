@@ -25,12 +25,8 @@ const projectListElement = (() => {
     }
 
     const renderContentList = () => {
-        const mainContent = document.createElement("div");
-        projectList.forEach(el => {
-            console.log(el);
-            mainContent.appendChild(el.renderProject());
-        });
-        return mainContent;
+        // const mainContent = document.createElement("div");
+        // return mainContent;
     }
 
     return {projectList, createProject, displayAllProjects, renderContentList};

@@ -36,17 +36,13 @@ export default class Project {
         const projectContainer = document.createElement("div");
         projectContainer.classList.toggle("project");
 
-        const h3 = document.createElement("h3");
-        h3.textContent = this.name;
-
-        const ul = document.createElement("ul");
         this.todolist.forEach(el => {
-            const li = document.createElement("li");
-            li.innerHTML = el.renderTodo().innerHTML;
-            ul.appendChild(li);
+            const todoItem = document.createElement("div");
+            todoItem.classList.toggle("todo");
+            todoItem.innerHTML = el.renderTodo().innerHTML;
+            projectContainer.appendChild(todoItem);
         });
 
-        projectContainer.append(h3, ul);
         return projectContainer;
     }
 }
