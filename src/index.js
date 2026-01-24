@@ -1,82 +1,79 @@
 "use strict";
 
-import { Project } from "./project.js"
+import projectListElement from "./contentlist"; 
+import "./style.css";
 
-const plist = document.querySelector(".projectlist");
-const addTaskModal = document.querySelector("#addtaskmodal");
+const content = document.querySelector(".content");
 
-// ProjectList stores the arrow function that returns an object,
-// thus making ProjectList an object
-const ProjectList = (() => {
+const addProjBtn = document.querySelector(".addprojbtn");
+const addProjModal = document.querySelector("#addprojmodal");
+const createProjBtn = document.querySelector(".createprojbtn");
 
-    const projectList = [];
-
-    const createProject = (name) => {
-        const proj = new Project(name);
-        projectList.push(proj);
-        return proj;
-    }
-
-    const renderProject = () => {
-        const project = projectList[index];
-
-        const h3 = document.createElement("h3");
-        h3.textContent = project.name;
-
-        const ul = document.createElement("ul");
-        project.todolist.forEach(el => {
-            const li = document.createElement("li");
-            li.textContent = el;
-            ul.appendChild(li);
-        });
-        plist.append(h3, ul);
-    }
-
-    return {projectList, createProject, renderProject};
-})();
+projectListElement.createProject("default");
+createSelect();
+display();
 
 const addTaskBtn = document.querySelector(".addtaskbtn");
+const addTaskModal = document.querySelector("#addtaskmodal");
+const createTodoBtn = document.querySelector(".createtodobtn");
+
+function display() {
+    const mainContent = projectListElement.renderContentList();
+    content.innerHTML = "";
+    content.appendChild(mainContent);
+}
+
+function createSelect() {
+    const select = document.querySelector("select");
+    select.innerHTML = "";
+    projectListElement.projectList.forEach(el => {
+        const option = document.createElement("option");
+        option.value = el.name;
+        option.textContent = el.name;
+        select.appendChild(option);
+    });
+}
+
+addProjBtn.addEventListener("click", () => {
+    if(addProjModal.open == false)
+        addProjModal.show();
+    else
+        addProjModal.close();
+});
+
+createProjBtn.addEventListener("click", getProjData);
+
+function getProjData() {
+    const projname = document.querySelector("#projname").value;
+    console.log(`got value ${projname}`);
+    projectListElement.createProject(projname);
+    createSelect();
+    display();
+    addProjModal.close();
+}
 
 addTaskBtn.addEventListener("click", () => {
-    if(addTaskModal.open === false)
+    if(addTaskModal.open == false)
         addTaskModal.show();
     else
         addTaskModal.close();
-})
+});
 
-const proj1 = ProjectList.createProject("default");
-
-proj1.addTodo("Shop dinner", 0, "Buy food for dinner", "25th Jan, 2026");
-proj1.addTodo("Meditation", 1, "Mediate for 30 minutes", "3rd Feb, 2026");
-proj1.addTodo("Finish homework", 0, "Solve all 50 math problems", "2nd Jan, 2026");
-
-// localStorage.setItem(proj1.projectId, JSON.stringify(proj1));
-
-//proj1.displayProject();
-
-// proj1.removeToDo(1);
-// proj1.markComplete(0);
-
-//proj1.displayProject();
-
-// const projdiv = proj1.renderProject();
-// plist.appendChild(projdiv);
-
-const submitbtn = document.querySelector(".submitbtn");
-submitbtn.addEventListener("click", getFormData);
+createTodoBtn.addEventListener("click", getToDoData);
 
 // Tricky part
-function getFormData() {
+function getToDoData() {
+    const projname = document.querySelector("#select").value;
     const title = document.querySelector("#title").value;
     const priority = document.querySelector("#priority").value;
     const description = document.querySelector("#description").value;
     const duedate = document.querySelector("#duedate").value;
-    proj1.addTodo(title, priority, description, duedate);
-    const projdiv2 = proj1.renderProject();
-    plist.innerHTML = "";
-    plist.appendChild(projdiv2);
+    const project = projectListElement.projectList.find(el => el.name === projname);
+    project.addTodo(title, priority, description, duedate);
+    console.log(projname, title, priority, description, duedate);
+    display();
     addTaskModal.close();
-}
+    }
 
-const projdiv2 = proj1.renderProject();
-plist.appendChild(projdiv2);
+
+

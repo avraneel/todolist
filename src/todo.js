@@ -1,8 +1,6 @@
 "use strict";
 
-const plist = document.querySelector(".projectlist");
-
-export class Todo {
+export default class Todo {
     constructor(title, priority, description, dueDate) {
         this.title = title;
         this.priority = priority;
@@ -13,14 +11,7 @@ export class Todo {
     }
 
     displayTodo() {
-        console.log(`[P${this.priority}] ${this.title}`);
-        console.log(`Due Date: ${this.dueDate}`);
-        console.log(this.description);
-        if(this.complete) 
-            console.log(`Status: Done`);
-        else
-            console.log("Status: To Do");
-        console.log(`Task ID ${this.taskId}`);
+        console.log(JSON.stringify(this));
     }
 
     renderTodo() {

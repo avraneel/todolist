@@ -1,3 +1,7 @@
 ul {
     list-style-type: none;
 }
+
+.project {
+    border: 1px solid black;
+}

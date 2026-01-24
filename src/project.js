@@ -1,13 +1,11 @@
 "use strict";
 
-import { Todo } from "./todo.js";
-const plist = document.querySelector(".projectlist");
+import Todo from "./todo.js";
 
-export class Project {
+export default class Project {
     constructor(name) {
         this.name = name;
         this.todolist = [];
-        this.projectId = crypto.randomUUID();
     }
 
     addTodo(title, priority, description, dueDate) {
@@ -15,14 +13,8 @@ export class Project {
         this.todolist.push(todo);
     }
 
-    findTodo(uuid) {
-        return this.todolist.find((item) => {
-            item.taskId == uuid;
-        });
-    }
-
     markComplete(index) {
-        if(index >= 0 && index < this.todolist.length )
+        if(index >= 0 && index < this.todolist.length)
             this.todolist[index].markComplete();
         else
             console.log("Index Out of Range");
@@ -37,12 +29,7 @@ export class Project {
     }
  
     displayProject() {
-        console.log(this.name);
-        console.log("============");
-        this.todolist.forEach((item) => {
-            item.displayTodo();
-            console.log("============");
-        });
+        console.log(JSON.stringify(this));
     }
 
     renderProject() {
@@ -58,9 +45,8 @@ export class Project {
             li.innerHTML = el.renderTodo().innerHTML;
             ul.appendChild(li);
         });
-        
+
         projectContainer.append(h3, ul);
         return projectContainer;
-        
     }
 }
