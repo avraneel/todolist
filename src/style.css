@@ -58,7 +58,7 @@ body {
     transition: 0.3s;
 }
 
-.addprojbtn, .addtaskbtn {
+.open-project-modal, .open-todo-modal {
     font-size: 1.3rem;
 }
 
@@ -83,7 +83,7 @@ body {
     border-radius: 10px;
 }
 
-#project-modal > form {
+.project-modal > form {
     font-family: "Manrope";
     gap: 20px;
     align-items: start;
@@ -95,12 +95,12 @@ body {
     padding: 1rem;
 }
 
-#todo-modal form {
+.todo-modal form {
     font-family: "Manrope";
     gap: 20px;
 }
 
-#todo-modal label {
+.todo-modal label {
     width: 12rem;
     display: inline-block;
 }
@@ -119,7 +119,7 @@ body {
     gap: 1.5rem;
 }
 
-.projectnav {
+.project-nav {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -139,7 +139,7 @@ body {
     cursor: pointer;
 }
 
-#todo-modal button {
+.todo-modal button {
     font-size: 1.3rem;
 }
 
