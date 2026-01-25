@@ -4,7 +4,6 @@ import "./style.css";
 import { projectModalOpenCloseHandler, createProjectHandler } from "./modules/projectModal";
 import { todoModalOpenCloseHandler, createTodoHandler } from "./modules/todoModal";
 import { addDefault } from "./modules/addDefault";
-import { projectSwitcher } from "./modules/projectSwitcher";
 
 addDefault();
 
@@ -13,4 +12,3 @@ todoModalOpenCloseHandler();
 
 createTodoHandler();
 createProjectHandler();
-projectSwitcher();

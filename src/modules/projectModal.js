@@ -3,7 +3,7 @@
 import { modalOpenCloseHandler } from "./modalHandler";
 import { Project } from "./Project";
 import { projectList } from "./ProjectList";
-import { renderProjectNavBar } from "./render";
+import { renderProjectDetails, renderProjectNavBar, renderSelectMenu } from "./render";
 
 function projectModalOpenCloseHandler() {
 
@@ -12,6 +12,19 @@ function projectModalOpenCloseHandler() {
     const projectModal = document.querySelector(".project-modal");
 
     modalOpenCloseHandler(openProjectBtn, closeProjectBtn, projectModal);
+}
+
+/* Input: Project nav dom item, Output: on click event will cause user to move
+    to that project */
+function addprojectSwitchEventHandler(projectNavItem) {
+    
+    const projectName = projectNavItem.classList[1];
+
+    projectNavItem.addEventListener("click", () => {
+
+        const projectObject = projectList.findProject(projectName);
+        renderProjectDetails(projectObject);
+    });
 }
 
 function createProjectHandler() {
@@ -36,11 +49,13 @@ function projectInputHandler() {
     const projectObject = new Project(projectName);
     projectList.listOfProjects.push(projectObject);
 
+    renderSelectMenu(projectList.listOfProjects);
+    renderProjectDetails(projectObject);
     renderProjectNavBar(projectList.listOfProjects);
 
     projectModal.close();
 
 }
 
-export { projectModalOpenCloseHandler, createProjectHandler };
+export { projectModalOpenCloseHandler, createProjectHandler, addprojectSwitchEventHandler };
 

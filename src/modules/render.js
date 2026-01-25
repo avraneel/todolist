@@ -1,4 +1,6 @@
-"use strict";;
+"use strict";
+
+import { addprojectSwitchEventHandler } from "./projectModal";
 
 /* Input: Todo Object, Output: Todo Dom Element */
 function renderTodo(todoObject) {
@@ -59,6 +61,7 @@ function renderProjectNavBar(projectList) {
 
     projectList.forEach(project => {
         const projectNavItem = renderProjectNavItem(project.name);
+        addprojectSwitchEventHandler(projectNavItem);
         projectNavBar.appendChild(projectNavItem);
     });
 }
