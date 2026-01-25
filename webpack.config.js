@@ -12,6 +12,7 @@ module.exports = {
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/template.html",
+            favicon: "./src/assets/favicon/tick.svg",
         }),
     ],
     module: {
