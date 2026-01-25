@@ -46,6 +46,8 @@ function todoInputHandler() {
     const todoObject = new Todo(title, priority, duedate, description);
     const projectObject = projectList.findProject(projectName);
     projectObject.todoList.push(todoObject);
+    console.log(projectObject);
+    console.log("==================");
     renderProjectDetails(projectObject); 
     todoModal.close();
 

@@ -2,12 +2,17 @@
 
 import { addprojectSwitchEventHandler } from "./projectModal";
 import { nameToClassName } from "./helper";
+import { renderDeleteElement } from "./renderDeleteElement";
+import { addDeleteEventHandler } from "./addDeleteEventHandler";
 
 /* Input: Todo Object, Output: Todo Dom Element */
-function renderTodo(todoObject) {
+function renderTodo(todoObject, projectName) {
     
     const todoDiv = document.createElement("div");
     todoDiv.classList.toggle("todo");
+
+    const todoInfoDiv = document.createElement("div");
+    todoInfoDiv.classList.toggle("todo-info");
 
     const summary = document.createElement("summary");
     summary.textContent = todoObject.title;
@@ -24,7 +29,17 @@ function renderTodo(todoObject) {
     const date = document.createElement("div");
     date.textContent = `Due: ${todoObject.dueDate}`;
 
-    todoDiv.append(descElement, priority, date);
+    todoInfoDiv.append(descElement, priority, date);
+
+    const deleteElement = renderDeleteElement();
+    deleteElement.classList.toggle(nameToClassName(projectName));
+    deleteElement.classList.toggle(nameToClassName(todoObject.title));
+    addDeleteEventHandler(deleteElement);
+
+    todoDiv.classList.toggle(nameToClassName(todoObject.title));
+
+    todoDiv.append(todoInfoDiv, deleteElement);
+
     return todoDiv;
 }
 
@@ -36,7 +51,7 @@ function renderProjectDetails(projectObject) {
 
     if(projectObject.todoList != undefined) {
         projectObject.todoList.forEach(todo => {
-            const todoDiv = renderTodo(todo);
+            const todoDiv = renderTodo(todo, projectObject.name);
             projectDetails.appendChild(todoDiv);
         });
     }

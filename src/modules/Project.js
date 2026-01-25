@@ -1,5 +1,7 @@
 "use strict";
 
+import { nameToClassName } from "./helper";
+
 class Project {
     constructor(name) {
         this.name = name;
@@ -14,6 +16,10 @@ class Project {
     removeTodo(todoTitle) {
         const index = this.todoList.indexOf(x => x.name === todoTitle);
         return this.todoList.splice(index, 1);
+    }
+
+    findTodoByClassName(className) {
+        return this.todoList.find(x => nameToClassName(x.title) === className);
     }
 }
 

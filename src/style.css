@@ -42,7 +42,7 @@ body {
     border: none;
     border-radius: 20px;
     box-shadow: 5px 6px 20px rgb(80, 80, 80);
-    margin: 6em 12em;
+    margin: 2em;
     padding: 3rem;
     display: flex;
     gap: 2rem;
@@ -149,17 +149,38 @@ body {
     cursor: pointer;
 }
 
-.close-project-btn:hover, .close-todo-btn:hover {
+.close-project-modal:hover, .close-todo-modal:hover {
     cursor: pointer;
 }
 
 .todo {
     font-family: "Manrope";
     font-size: 1.3rem;
+    display: flex;
+    gap: 20px
 }
 
 .project-details {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+.delete-icon {
+    color: red;
+    height: 2rem;
+    border: none;
+}
+
+.delete-button {
+    border: none;
+    padding: 10px;
+    transition: 0.3s;
+    align-self: center;
+    border-radius: 10px;
+}
+
+.delete-button:hover {
+    background-color: #c5c5c5;
+    cursor: pointer;
 }
