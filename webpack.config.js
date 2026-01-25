@@ -18,16 +18,16 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.html/i,
+                test: /\.html$/i,
                 use: "html-loader",
             },
             {
-                test: /\.css/i,
+                test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.(png|svg|jpg)/i,
-                use: "asset/resource",
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: "asset/resource",
             },
         ],
     },
