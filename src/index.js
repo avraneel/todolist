@@ -10,7 +10,6 @@ import {
   createTodoHandler,
 } from "./modules/todoModal";
 import { addDefault } from "./modules/addDefault";
-
 addDefault();
 
 projectModalOpenCloseHandler();
