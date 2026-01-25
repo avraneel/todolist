@@ -18,11 +18,11 @@ function projectModalOpenCloseHandler() {
     to that project */
 function addprojectSwitchEventHandler(projectNavItem) {
     
-    const projectName = projectNavItem.classList[1];
+    const className = projectNavItem.classList[1];
 
     projectNavItem.addEventListener("click", () => {
 
-        const projectObject = projectList.findProject(projectName);
+        const projectObject = projectList.findProjectByClassName(className);
         renderProjectDetails(projectObject);
     });
 }

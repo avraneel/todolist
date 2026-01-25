@@ -10,6 +10,11 @@ class Project {
     findTodo(todoTitle) {
         return this.todoList.find(x => x.name === todoTitle);
     }
+
+    removeTodo(todoTitle) {
+        const index = this.todoList.indexOf(x => x.name === todoTitle);
+        return this.todoList.splice(index, 1);
+    }
 }
 
 console.log(Project.todoList);

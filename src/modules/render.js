@@ -1,6 +1,7 @@
 "use strict";
 
 import { addprojectSwitchEventHandler } from "./projectModal";
+import { nameToClassName } from "./helper";
 
 /* Input: Todo Object, Output: Todo Dom Element */
 function renderTodo(todoObject) {
@@ -44,9 +45,13 @@ function renderProjectDetails(projectObject) {
 /* Input: Project Name, Output: Project nav Dom Element */
 function renderProjectNavItem(projectName) {
 
+    const className = nameToClassName(projectName);
+
     const projectNavItem = document.createElement("div");
     projectNavItem.classList.toggle("project-nav-item");
-    projectNavItem.classList.toggle(projectName);
+    projectNavItem.classList.toggle(className);
+
+    addprojectSwitchEventHandler(projectNavItem);
 
     projectNavItem.textContent = projectName;
 
@@ -61,7 +66,6 @@ function renderProjectNavBar(projectList) {
 
     projectList.forEach(project => {
         const projectNavItem = renderProjectNavItem(project.name);
-        addprojectSwitchEventHandler(projectNavItem);
         projectNavBar.appendChild(projectNavItem);
     });
 }
