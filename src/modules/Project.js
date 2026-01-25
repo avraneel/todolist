@@ -17,6 +17,4 @@ class Project {
     }
 }
 
-console.log(Project.todoList);
-
 export { Project };
