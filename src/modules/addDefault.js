@@ -4,8 +4,12 @@ import { projectList } from "./ProjectList";
 import { Project } from "./Project";
 import { renderProjectDetails, renderProjectNavBar, renderSelectMenu } from "./render";
 import { Todo } from "./Todo";
+import { priority } from "./priority";
+import { renderPriority } from "./renderPriority";
 
 function addDefault() {
+
+    renderPriority(priority);
 
     const defaultProject = new Project("Default");
     projectList.listOfProjects.push(defaultProject);

@@ -24,6 +24,8 @@ function createTodoHandler() {
 // Gets todo form data
 function getTodoInput() {
     
+    const validFlag = false;
+
     const projectName = document.querySelector("#select").value;
     const title = document.querySelector("#title").value;
     const priority = document.querySelector("#priority").value;

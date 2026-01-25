@@ -1,5 +1,9 @@
 "use strict";
 
+/**
+ * @class
+ * @classdesc The Todo class stores one Todo object.
+ */
 class Todo {
 
     constructor(title, priority, dueDate, description) {
