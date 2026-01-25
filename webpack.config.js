@@ -9,6 +9,10 @@ module.exports = {
     filename: "main.js",
     clean: true,
   },
+  devtool: "eval-source-map",
+  devserver: {
+    watchFiles: ["./src/template.html"],
+  },
   plugins: [
     new HtmlWebPackPlugin({
       template: "./src/template.html",
