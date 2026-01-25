@@ -42,7 +42,7 @@ body {
     border: none;
     border-radius: 20px;
     box-shadow: 5px 6px 20px rgb(80, 80, 80);
-    margin: 6em;
+    margin: 6em 12em;
     padding: 3rem;
     display: flex;
     gap: 2rem;
@@ -156,4 +156,10 @@ body {
 .todo {
     font-family: "Manrope";
     font-size: 1.3rem;
+}
+
+.project-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }

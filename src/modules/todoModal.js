@@ -30,6 +30,9 @@ function getTodoInput() {
     const duedate = document.querySelector("#duedate").value;
     const description = document.querySelector("#description").value;
 
+    const todoForm = document.querySelector(".todo-form");
+    todoForm.reset();
+
     return { projectName, title, priority, duedate, description }
 }
 

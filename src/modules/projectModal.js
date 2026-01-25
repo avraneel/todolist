@@ -37,6 +37,9 @@ function createProjectHandler() {
 function getProjectInputData() {
 
     const projectName = document.querySelector("#project-name").value;
+
+    const projectForm = document.querySelector(".project-form");
+    projectForm.reset();
     
     return projectName;
 }
