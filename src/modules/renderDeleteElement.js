@@ -1,19 +1,17 @@
-import trashCan from '../assets/svg/trash-can.svg'
+import trashCan from "../assets/svg/trash-can.svg";
 
 function renderDeleteElement() {
+  const deleteElement = document.createElement("button");
+  deleteElement.classList.toggle("delete-button");
 
-    const deleteElement = document.createElement("button");
-    deleteElement.classList.toggle("delete-button");
+  const deleteElementIcon = document.createElement("img");
+  deleteElementIcon.src = trashCan;
+  deleteElementIcon.alt = "delete";
+  deleteElementIcon.classList.toggle("delete-icon");
 
-    const deleteElementIcon = document.createElement("img");
-    deleteElementIcon.src = trashCan;
-    deleteElementIcon.alt = "delete";
-    deleteElementIcon.classList.toggle("delete-icon");
+  deleteElement.appendChild(deleteElementIcon);
 
-    deleteElement.appendChild(deleteElementIcon);
-
-    return deleteElement;
-
+  return deleteElement;
 }
 
 export { renderDeleteElement };

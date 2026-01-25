@@ -3,62 +3,62 @@
 import { modalOpenCloseHandler } from "./modalHandler";
 import { Project } from "./Project";
 import { projectList } from "./ProjectList";
-import { renderProjectDetails, renderProjectNavBar, renderSelectMenu } from "./render";
+import {
+  renderProjectDetails,
+  renderProjectNavBar,
+  renderSelectMenu,
+} from "./render";
 
 function projectModalOpenCloseHandler() {
+  const openProjectBtn = document.querySelector(".open-project-modal");
+  const closeProjectBtn = document.querySelector(".close-project-modal");
+  const projectModal = document.querySelector(".project-modal");
 
-    const openProjectBtn = document.querySelector(".open-project-modal");
-    const closeProjectBtn = document.querySelector(".close-project-modal");
-    const projectModal = document.querySelector(".project-modal");
-
-    modalOpenCloseHandler(openProjectBtn, closeProjectBtn, projectModal);
+  modalOpenCloseHandler(openProjectBtn, closeProjectBtn, projectModal);
 }
 
 /* Input: Project nav dom item, Output: on click event will cause user to move
     to that project */
 function addprojectSwitchEventHandler(projectNavItem) {
-    
-    const className = projectNavItem.classList[1];
+  const className = projectNavItem.classList[1];
 
-    projectNavItem.addEventListener("click", () => {
-
-        const projectObject = projectList.findProjectByClassName(className);
-        renderProjectDetails(projectObject);
-    });
+  projectNavItem.addEventListener("click", () => {
+    const projectObject = projectList.findProjectByClassName(className);
+    renderProjectDetails(projectObject);
+  });
 }
 
 function createProjectHandler() {
+  const createProjectBtn = document.querySelector(".create-project-btn");
 
-    const createProjectBtn = document.querySelector(".create-project-btn");
-
-    createProjectBtn.addEventListener("click", projectInputHandler);
+  createProjectBtn.addEventListener("click", projectInputHandler);
 }
 
 function getProjectInputData() {
+  const projectName = document.querySelector("#project-name").value;
 
-    const projectName = document.querySelector("#project-name").value;
+  const projectForm = document.querySelector(".project-form");
+  projectForm.reset();
 
-    const projectForm = document.querySelector(".project-form");
-    projectForm.reset();
-    
-    return projectName;
+  return projectName;
 }
 
 function projectInputHandler() {
+  const projectModal = document.querySelector(".project-modal");
+  const projectName = getProjectInputData();
 
-    const projectModal = document.querySelector(".project-modal");
-    const projectName = getProjectInputData();
+  const projectObject = new Project(projectName);
+  projectList.listOfProjects.push(projectObject);
 
-    const projectObject = new Project(projectName);
-    projectList.listOfProjects.push(projectObject);
+  renderSelectMenu(projectList.listOfProjects);
+  renderProjectDetails(projectObject);
+  renderProjectNavBar(projectList.listOfProjects);
 
-    renderSelectMenu(projectList.listOfProjects);
-    renderProjectDetails(projectObject);
-    renderProjectNavBar(projectList.listOfProjects);
-
-    projectModal.close();
-
+  projectModal.close();
 }
 
-export { projectModalOpenCloseHandler, createProjectHandler, addprojectSwitchEventHandler };
-
+export {
+  projectModalOpenCloseHandler,
+  createProjectHandler,
+  addprojectSwitchEventHandler,
+};

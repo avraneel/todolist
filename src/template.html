@@ -1,56 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="mainapp">
-        <div class="project-area">
-            <button type="button" class="open-project-modal btn">&plus; Create Project</button>
-            <dialog class="project-modal">
-                <form method="dialog" class="project-form">
-                    <div class="close-project-modal">&times;</div>
-                    <label for="project-name">Name Your Project</label>
-                    <input type="text" name="project-name" id="project-name">
-                    <button type="button" class="create-project-btn btn">Submit Project</button>
-                </form>
-            </dialog>
-            <nav class="project-nav"></nav>
-        </div>
-        <div class="todo-area">
-            <button type="button" class="open-todo-modal btn">&plus; Create Task</button>
-            <dialog class="todo-modal">
-                <form method="dialog" class="todo-form">
-                    <div class="close-todo-modal">&times;</div>
-                    <h2>Add a Task</h2>
-                    <div class="form-item">
-                        <label for="select">Project</label>
-                        <select id="select">
-                            <option>Select Project</option>
-                        </select>
-                    </div>
-                    <div class="form-item">
-                        <label for="title">Title</label>
-                        <input type="text" name="title" id="title" required>
-                    </div>
-                    <div class="form-item priority-item">
-                    </div>
-                    <div class="form-item">
-                        <label for="duedate">Due Date</label>
-                        <input type="date" name="duedate" id="duedate">
-                    </div>
-                    <div class="form-item">
-                        <label for="description">Description</label>
-                        <textarea name="description" id="description"></textarea>
-                    </div>
-                    <button type="button" class="create-todo-btn btn">Submit Task</button>
-                </form>
-            </dialog>
-            <div class="project-details"></div>
-        </div>
+      <div class="project-area">
+        <button type="button" class="open-project-modal btn">
+          &plus; Create Project
+        </button>
+        <dialog class="project-modal">
+          <form method="dialog" class="project-form">
+            <div class="close-project-modal">&times;</div>
+            <label for="project-name">Name Your Project</label>
+            <input type="text" name="project-name" id="project-name" />
+            <button type="button" class="create-project-btn btn">
+              Submit Project
+            </button>
+          </form>
+        </dialog>
+        <nav class="project-nav"></nav>
+      </div>
+      <div class="todo-area">
+        <button type="button" class="open-todo-modal btn">
+          &plus; Create Task
+        </button>
+        <dialog class="todo-modal">
+          <form method="dialog" class="todo-form">
+            <div class="close-todo-modal">&times;</div>
+            <h2>Add a Task</h2>
+            <div class="form-item">
+              <label for="select">Project</label>
+              <select id="select">
+                <option>Select Project</option>
+              </select>
+            </div>
+            <div class="form-item">
+              <label for="title">Title</label>
+              <input type="text" name="title" id="title" required />
+            </div>
+            <div class="form-item priority-item"></div>
+            <div class="form-item">
+              <label for="duedate">Due Date</label>
+              <input type="date" name="duedate" id="duedate" />
+            </div>
+            <div class="form-item">
+              <label for="description">Description</label>
+              <textarea name="description" id="description"></textarea>
+            </div>
+            <button type="button" class="create-todo-btn btn">
+              Submit Task
+            </button>
+          </form>
+        </dialog>
+        <div class="project-details"></div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

@@ -1,11 +1,10 @@
 function renderPriorityLabel() {
+  const priorityLabel = document.createElement("label");
 
-    const priorityLabel = document.createElement("label");
+  priorityLabel.htmlFor = "priority";
+  priorityLabel.textContent = "Priority";
 
-    priorityLabel.htmlFor = "priority"
-    priorityLabel.textContent = "Priority";
-
-    return priorityLabel;
+  return priorityLabel;
 }
 
 /**
@@ -13,26 +12,22 @@ function renderPriorityLabel() {
  * @param {*} priority The priority object
  */
 function renderPriority(priority) {
+  const priorityItem = document.querySelector(".priority-item");
 
-    const priorityItem = document.querySelector(".priority-item");
+  const prioritySelect = document.createElement("select");
+  prioritySelect.id = "priority";
 
-    const prioritySelect = document.createElement("select");
-    prioritySelect.id = "priority";
+  for (const priorityValue in priority) {
+    const optionElement = document.createElement("option");
 
-    for (const priorityValue in priority) {
+    optionElement.textContent = priority[priorityValue];
+    optionElement.value = priority[priorityValue].toLowerCase();
 
-        const optionElement = document.createElement("option");
+    prioritySelect.appendChild(optionElement);
+  }
 
-        optionElement.textContent =  priority[priorityValue];
-        optionElement.value = priority[priorityValue].toLowerCase();
-
-        prioritySelect.appendChild(optionElement);
-
-    }
-
-    const priorityLabel = renderPriorityLabel();
-    priorityItem.append(priorityLabel, prioritySelect);
-
+  const priorityLabel = renderPriorityLabel();
+  priorityItem.append(priorityLabel, prioritySelect);
 }
 
 export { renderPriority };

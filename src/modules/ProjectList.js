@@ -3,16 +3,17 @@
 import { nameToClassName } from "./helper";
 
 const projectList = {
-    
-    listOfProjects: [],
+  listOfProjects: [],
 
-    findProject: (projectName) => {
-        return projectList.listOfProjects.find(x => x.name === projectName);
-    },
+  findProject: (projectName) => {
+    return projectList.listOfProjects.find((x) => x.name === projectName);
+  },
 
-    findProjectByClassName: (className) => {
-        return projectList.listOfProjects.find(x => nameToClassName(x.name) === className);
-    }
+  findProjectByClassName: (className) => {
+    return projectList.listOfProjects.find(
+      (x) => nameToClassName(x.name) === className,
+    );
+  },
 };
 
 export { projectList };
