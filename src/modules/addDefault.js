@@ -7,18 +7,21 @@ import { Todo } from "./Todo";
 import { priority } from "./priority";
 import { renderPriority } from "./renderPriority";
 
+/**
+ * Function called at the beginning of execution
+ */
 function addDefault() {
 
     renderPriority(priority);
 
-    const defaultProject = new Project("Default");
+    const defaultProject = new Project("Personal Life");
     projectList.listOfProjects.push(defaultProject);
 
     renderProjectDetails(defaultProject);
     renderProjectNavBar(projectList.listOfProjects);
     renderSelectMenu(projectList.listOfProjects);
 
-    const default2Project = new Project("Default2");
+    const default2Project = new Project("Work Tasks");
     projectList.listOfProjects.push(default2Project);
 
     renderProjectDetails(default2Project);

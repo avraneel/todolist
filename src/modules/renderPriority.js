@@ -23,7 +23,7 @@ function renderPriority(priority) {
 
         const optionElement = document.createElement("option");
 
-        optionElement.textContent = priority[priorityValue];
+        optionElement.textContent =  priority[priorityValue];
         optionElement.value = priority[priorityValue].toLowerCase();
 
         prioritySelect.appendChild(optionElement);
