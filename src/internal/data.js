@@ -25,14 +25,25 @@ const datalist = () => {
     const project = new Project(name);
     projectList.push(project);
     setActiveId(project.id);
+
+    let ls = JSON.parse(localStorage.getItem("projectList"));
+    ls.push(project);
+    localStorage.setItem("activeId", JSON.stringify(activeId));
+    localStorage.setItem("projectList", JSON.stringify(ls));
     // console.log(activeId);
     //return active;
   };
 
   const insertTodo = (projectId, title, priority, dueDate, description) => {
-    const { project } = findProject(projectId);
+    const { project, index } = findProject(projectId);
     setActiveId(projectId);
     project.insertTodo(title, priority, dueDate, description);
+
+    let ls = JSON.parse(localStorage.getItem("projectList"));
+    //console.log(project.todoList[0]);
+    ls[index].todoList.push(project.todoList.at(-1));
+    localStorage.setItem("activeId", JSON.stringify(activeId));
+    localStorage.setItem("projectList", JSON.stringify(ls));
   };
 
   // removes project from list, only if list is non-empty
@@ -42,14 +53,17 @@ const datalist = () => {
       console.log("Cannot delete from empty project list!");
       return 2;
     } else {
+      //let ls = JSON.parse(localStorage.getItem("projectList"));
       projectList.splice(index, 1);
+      localStorage.setItem("projectList", JSON.stringify(projectList));
       return 0;
     }
   };
 
   const removeTodo = (projectId, todoId) => {
-    const { project } = findProject(projectId);
+    const { project, index } = findProject(projectId);
     project.removeTodo(todoId);
+    localStorage.setItem("projectList", JSON.stringify(projectList));
   };
 
   const print = () => {
@@ -94,7 +108,7 @@ const datalist = () => {
 };
 
 export const data = datalist();
-data.insertProject("Default");
 localStorage.setItem("projectList", JSON.stringify(data.projectList));
 localStorage.setItem("activeId", JSON.stringify(data.activeId));
+data.insertProject("Default");
 // console.log(data.activeId);
