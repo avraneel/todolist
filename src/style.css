@@ -40,10 +40,7 @@ button,
   padding: 1rem 0.5rem;
 }
 
-.project:hover {
-  background-color: beige;
-}
-
+.project:hover,
 .active {
   background-color: bisque;
 }
@@ -65,4 +62,16 @@ header {
 main {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+}
+
+.high {
+  background-color: red;
+}
+
+.medium {
+  background-color: yellow;
+}
+
+.low {
+  background-color: cyan;
 }

@@ -18,6 +18,7 @@ export function createTodoElement(todoObject) {
   const descElement = document.createElement("details");
   descElement.append(summary, p);
 
+  todoDiv.classList.toggle(todoObject.priority);
   const priority = document.createElement("div");
   priority.textContent = `${todoObject.priority} priority`;
 

@@ -32,8 +32,9 @@ closeTodoModal.addEventListener("click", () => {
 
 const id = data.projectList[0].id;
 
-data.insertTodo(id, "lorem", 1, "ipsum", "dolor");
-data.insertTodo(id, "abc", 1, "def", "ghi");
+data.insertTodo(id, "lorem", "high", "ipsum", "dolor");
+data.insertTodo(id, "abc", "medium", "def", "ghi");
+data.insertTodo(id, "sleep", "low", "lorem isum dolor", "no time to sleep");
 
 //data.print();
 
