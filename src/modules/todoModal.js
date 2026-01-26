@@ -1,9 +1,10 @@
 "use strict";
 
 import { modalOpenCloseHandler } from "./modalHandler";
-import { Todo } from "./Todo";
+import { Todo } from "./todo";
 import { projectList } from "./ProjectList";
 import { renderProjectDetails } from "./render";
+import { getTodoInput } from "./forminput";
 
 function todoModalOpenCloseHandler() {
   const openTodoModal = document.querySelector(".open-todo-modal");

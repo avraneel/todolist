@@ -1,4 +1,4 @@
-import { Todo } from "./Todo";
+import { Todo } from "./todo";
 import { projectList } from "./ProjectList";
 import { renderProjectDetails } from "./render";
 

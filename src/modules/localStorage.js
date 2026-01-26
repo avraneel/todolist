@@ -1,4 +1,4 @@
-import { Todo } from "./Todo.js";
+import { Todo } from "./todo.js";
 import { projectList } from "./ProjectList.js";
 
 function storeTodo(todoObject) {

@@ -7,10 +7,6 @@ function renderPriorityLabel() {
   return priorityLabel;
 }
 
-/**
- * Creates a priority select element and appends it to the Todo form
- * @param {*} priority The priority object
- */
 function renderPriority(priority) {
   const priorityItem = document.querySelector(".priority-item");
 

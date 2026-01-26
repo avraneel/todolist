@@ -1,8 +1,9 @@
 "use strict";
 
 import { modalOpenCloseHandler } from "./modalHandler";
-import { Project } from "./Project";
+import { Project } from "./project";
 import { projectList } from "./ProjectList";
+import { getProjectInput } from "./forminput";
 import {
   renderProjectDetails,
   renderProjectNavBar,
@@ -34,18 +35,9 @@ function createProjectHandler() {
   createProjectBtn.addEventListener("click", projectInputHandler);
 }
 
-function getProjectInputData() {
-  const projectName = document.querySelector("#project-name").value;
-
-  const projectForm = document.querySelector(".project-form");
-  projectForm.reset();
-
-  return projectName;
-}
-
 function projectInputHandler() {
   const projectModal = document.querySelector(".project-modal");
-  const projectName = getProjectInputData();
+  const projectName = getProjectInput();
 
   const projectObject = new Project(projectName);
   projectList.listOfProjects.push(projectObject);

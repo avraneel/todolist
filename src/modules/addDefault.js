@@ -1,13 +1,13 @@
 "use strict";
 
 import { projectList } from "./ProjectList";
-import { Project } from "./Project";
+import { Project } from "./project";
 import {
   renderProjectDetails,
   renderProjectNavBar,
   renderSelectMenu,
 } from "./render";
-import { Todo } from "./Todo";
+import { Todo } from "./todo";
 import { priority } from "./priority";
 import { renderPriority } from "./renderPriority";
 import { storeTodo, storeProjectList } from "./localStorage";

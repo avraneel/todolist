@@ -8,12 +8,12 @@ function checkTitleValidity(title) {
   }
 }
 
-function checkDateValidity(date) {
-  if (date < Date()) {
+function isDateValid(date) {
+  if (date < Date.now()) {
     return false;
   } else {
     return true;
   }
 }
 
-export { checkDateValidity };
+export { isDateValid };

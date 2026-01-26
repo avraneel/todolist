@@ -4,56 +4,78 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To-Do List</title>
-    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="mainapp">
       <div class="project-area">
         <button type="button" class="open-project-modal btn">
-          &plus; Create Project
+          Create Project
         </button>
         <dialog class="project-modal">
           <form method="dialog" class="project-form">
-            <div class="close-project-modal">&times;</div>
-            <label for="project-name">Name Your Project</label>
-            <input type="text" name="project-name" id="project-name" />
-            <button type="button" class="create-project-btn btn">
-              Submit Project
-            </button>
+            <h2>Create Project</h2>
+            <div>
+              <label for="project-name">Name *:</label>
+              <input
+                type="text"
+                name="project-name"
+                id="project-name"
+                required
+              />
+            </div>
+            <section>
+              <button type="submit">Add</button>
+              <button type="button" class="close-project-modal">Close</button>
+            </section>
           </form>
         </dialog>
         <nav class="project-nav"></nav>
       </div>
       <div class="todo-area">
-        <button type="button" class="open-todo-modal btn">
-          &plus; Create Task
-        </button>
-        <dialog class="todo-modal">
+        <button type="button" class="open-todo-modal btn">Create Task</button>
+        <dialog class="todo-modal" open>
           <form method="dialog" class="todo-form">
-            <div class="close-todo-modal">&times;</div>
-            <h2>Add a Task</h2>
-            <div class="form-item">
+            <h2>Add Task</h2>
+            <p>Please complete all required (*) fields</p>
+            <section>
               <label for="select">Project</label>
               <select id="select">
                 <option>Select Project</option>
               </select>
-            </div>
-            <div class="form-item">
-              <label for="title">Title</label>
-              <input type="text" name="title" id="title" required />
-            </div>
-            <div class="form-item priority-item"></div>
-            <div class="form-item">
-              <label for="duedate">Due Date</label>
-              <input type="date" name="duedate" id="duedate" />
-            </div>
-            <div class="form-item">
-              <label for="description">Description</label>
-              <textarea name="description" id="description"></textarea>
-            </div>
-            <button type="button" class="create-todo-btn btn">
-              Submit Task
-            </button>
+            </section>
+            <section>
+              <div class="form-item">
+                <label for="title">Title *:</label>
+                <input type="text" name="title" id="title" required />
+              </div>
+              <fieldset>
+                <legend>Priority</legend>
+                <div>
+                  <input type="radio" name="priority" id="priority_high" />
+                  <label for="priority_high">High</label>
+                </div>
+                <div>
+                  <input type="radio" name="priority" id="priority_medium" />
+                  <label for="priority_medium">Medium</label>
+                </div>
+                <div>
+                  <input type="radio" name="priority" id="priority_low" />
+                  <label for="priority_low">Low</label>
+                </div>
+              </fieldset>
+              <div class="form-item">
+                <label for="duedate">Due Date *:</label>
+                <input type="date" name="duedate" id="duedate" />
+              </div>
+              <div class="form-item">
+                <label for="description">Description</label>
+                <textarea name="description" id="description"></textarea>
+              </div>
+            </section>
+            <section>
+              <button>Cancel</button>
+              <button type="submit" class="create-todo-btn btn">Add</button>
+            </section>
           </form>
         </dialog>
         <div class="project-details"></div>
