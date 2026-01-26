@@ -9,6 +9,7 @@ export function deleteProject(projectId) {
 
   deleteProjectButton.addEventListener("click", (e) => {
     if (data.projectList.length === 1) {
+      // if deleting currently active project, disable it
       e.preventDefault();
       alert("You must have atleast one project!");
     } else {
@@ -17,7 +18,6 @@ export function deleteProject(projectId) {
       updateSidebar();
       console.log(data.getActiveId());
       console.log(id);
-      // if deleting currently active project, then reset active id to next project id
       if (data.getActiveId() === id) {
         data.setActiveId(data.projectList[0].id);
       }
