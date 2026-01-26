@@ -1,195 +1,68 @@
-@font-face {
-  font-family: "Figtree";
-  src:
-    url("./assets/fonts/Figtree-Light.woff2") format("woff2"),
-    url("./assets/fonts/Figtree-Light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Manrope";
-  src:
-    url("./assets/fonts/Manrope-ExtraLight.woff2") format("woff2"),
-    url("./assets/fonts/Figtree-Light.woff") format("woff");
-  font-weight: 200;
-  font-style: normal;
-  font-display: swap;
-}
-
-* {
-  padding: 0;
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  outline: none;
 }
 
 *:not(dialog) {
   margin: 0;
 }
 
-:root {
-  --color-1: #6832ff;
-  --color-2: #ff298d;
-  --gradient: linear-gradient(var(--color-1), var(--color-2));
+input,
+button,
+textarea,
+select {
+  font: inherit;
 }
 
 body {
+  line-height: 1.5;
   height: 100vh;
-  background: var(--gradient);
+  display: grid;
+  grid-template-columns: auto 1fr;
 }
 
-.mainapp {
-  background: #eeeaea;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 5px 6px 20px rgb(80, 80, 80);
-  margin: 2em;
-  padding: 3rem;
-  display: flex;
-  gap: 2rem;
-}
-
-.btn {
-  border: none;
-  padding: 1em;
-  color: white;
-  border-radius: 10px;
-  font-family: "Figtree";
-  background: var(--color-1);
-  transition: 0.3s;
-}
-
-.open-project-modal,
-.open-todo-modal {
-  font-size: 1.3rem;
-}
-
-:modal {
-  background-color: #b296ff;
-  border: none;
-  border-radius: 20px;
-  padding: 3rem;
-  font-size: 2rem;
-  transition: 0.3s;
-}
-
-:modal > form {
-  display: flex;
-  flex-direction: column;
-}
-
-#project-name {
-  border: none;
-  font-family: "Manrope";
-  font-size: 1.5rem;
-  padding: 1rem 2rem;
-  border-radius: 10px;
-}
-
-.project-modal > form {
-  font-family: "Manrope";
-  gap: 20px;
-  align-items: start;
-}
-
-#project-modal button {
-  border-radius: 10px;
-  font-size: 1.3rem;
-  padding: 1rem;
-}
-
-.todo-modal form {
-  font-family: "Manrope";
-  gap: 20px;
-}
-
-.todo-modal label {
-  width: 12rem;
-  display: inline-block;
-}
-
-#select,
-#title,
-#priority,
-#duedate,
-#description {
-  border: none;
-  font-family: "Manrope";
-  border-radius: 10px;
-  font-size: 1.5rem;
-  padding: 1rem 2rem;
-}
-
-.project-area,
-.todo-area {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.project-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.project-nav-item {
-  font-family: "Manrope";
-  font-size: 1.5rem;
-  padding: 1rem;
-  margin: 0.5rem;
-  border-radius: 10px;
-}
-
-.project-nav-item:hover {
-  background-color: #bebdbd;
-  transition: 0.3s;
+button,
+.project {
   cursor: pointer;
 }
 
-.todo-modal button {
-  font-size: 1.3rem;
-}
-
-.btn:hover {
-  background: var(--color-2);
-  cursor: pointer;
-}
-
-.close-project-modal:hover,
-.close-todo-modal:hover {
-  cursor: pointer;
-}
-
-.todo {
-  font-family: "Manrope";
-  font-size: 1.3rem;
-  display: flex;
-  gap: 20px;
-}
-
-.project-details {
+.sidebar-items {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  margin-top: 1rem;
 }
 
-.delete-icon {
-  color: red;
-  height: 2rem;
-  border: none;
+.project {
+  margin: 0.5rem 0rem;
+  border: 1px solid black;
+  padding: 1rem 0.5rem;
 }
 
-.delete-button {
-  border: none;
-  padding: 10px;
-  transition: 0.3s;
-  align-self: center;
-  border-radius: 10px;
+.project:hover {
+  background-color: beige;
 }
 
-.delete-button:hover {
-  background-color: #c5c5c5;
-  cursor: pointer;
+.active {
+  background-color: bisque;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  border-right: 1px solid black;
+  padding: 1rem 5rem 1rem 1rem;
+}
+
+.content {
+  padding: 1rem 4rem;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
