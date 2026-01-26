@@ -1,120 +1,121 @@
 import { Project } from "./project";
 
-const datalist = () => {
-  const projectList = [];
-  let activeId = {
+export const data = {
+  projectList: [],
+  activeId: {
     id: "",
-  };
+  },
 
-  const isEmpty = () => {
+  isEmpty() {
     if (projectList.length == 0) {
       return true;
     } else {
       return false;
     }
-  };
+  },
 
-  const findProject = (id) => {
-    const project = projectList.find((x) => x.id === id);
-    const index = projectList.indexOf(project);
+  findProject(id) {
+    const project = this.projectList.find((x) => x.id === id);
+    const index = this.projectList.indexOf(project);
 
     return { project, index };
-  };
+  },
 
-  const insertProject = (name) => {
+  insertProject(name) {
     const project = new Project(name);
-    projectList.push(project);
-    setActiveId(project.id);
+    this.projectList.push(project);
+    this.setActiveId(project.id);
 
     let ls = JSON.parse(localStorage.getItem("projectList"));
     ls.push(project);
-    localStorage.setItem("activeId", JSON.stringify(activeId));
+    localStorage.setItem("activeId", JSON.stringify(this.activeId));
     localStorage.setItem("projectList", JSON.stringify(ls));
     // console.log(activeId);
     //return active;
-  };
+  },
 
-  const insertTodo = (projectId, title, priority, dueDate, description) => {
-    const { project, index } = findProject(projectId);
-    setActiveId(projectId);
+  insertTodo(projectId, title, priority, dueDate, description) {
+    // console.log(projectId);
+    const { project, index } = this.findProject(projectId);
+    // console.log(project);
+    this.setActiveId(projectId);
     project.insertTodo(title, priority, dueDate, description);
 
     let ls = JSON.parse(localStorage.getItem("projectList"));
+    // console.log(ls);
+    // console.log(index);
     //console.log(project.todoList[0]);
     ls[index].todoList.push(project.todoList.at(-1));
-    localStorage.setItem("activeId", JSON.stringify(activeId));
+    localStorage.setItem("activeId", JSON.stringify(this.activeId));
     localStorage.setItem("projectList", JSON.stringify(ls));
-  };
+  },
 
   // removes project from list, only if list is non-empty
-  const removeProject = (id) => {
+  removeProject(id) {
     const { index } = findProject(id);
     if (isEmpty()) {
       console.log("Cannot delete from empty project list!");
       return 2;
     } else {
       //let ls = JSON.parse(localStorage.getItem("projectList"));
-      projectList.splice(index, 1);
-      localStorage.setItem("projectList", JSON.stringify(projectList));
+      this.projectList.splice(index, 1);
+      localStorage.setItem("projectList", JSON.stringify(this.projectList));
       return 0;
     }
-  };
+  },
 
-  const removeTodo = (projectId, todoId) => {
+  removeTodo(projectId, todoId) {
     const { project, index } = findProject(projectId);
     project.removeTodo(todoId);
-    localStorage.setItem("projectList", JSON.stringify(projectList));
-  };
+    localStorage.setItem("projectList", JSON.stringify(this.projectList));
+  },
 
-  const print = () => {
+  print() {
     console.log("All data: ");
-    console.log(`Active ID: ${activeId}`);
-    projectList.forEach((item) => {
+    console.log(`Active ID: ${this.activeId}`);
+    this.projectList.forEach((item) => {
       item.print();
       console.log("========");
     });
-  };
+  },
 
-  const getTodoByProject = (id) => {
-    const { project } = findProject(id);
+  getTodoByProject(id) {
+    const { project } = this.findProject(id);
     return project.todoList;
-  };
+  },
 
-  const getActiveId = () => {
-    return activeId.id;
-  };
+  getActiveId() {
+    return this.activeId.id;
+  },
 
-  const setActiveId = (id) => {
-    activeId.id = id;
-  };
+  setActiveId(id) {
+    this.activeId.id = id;
+  },
 
   // markdone
-  const toggleTodoDone = (todoId) => {
-    const pId = activeId.id;
-    const { project } = findProject(pId);
+  toggleTodoDone(todoId) {
+    const pId = this.activeId.id;
+    const { project } = this.findProject(pId);
     const { todo } = project.findTodo(todoId);
     todo.toggleDone();
-  };
+  },
 
-  return {
-    projectList,
-    activeId,
-    insertProject,
-    insertTodo,
-    removeProject,
-    removeTodo,
-    print,
-    getTodoByProject,
-    findProject,
-    getActiveId,
-    setActiveId,
-    isEmpty,
-    toggleTodoDone,
-  };
+  // return {
+  //   projectList,
+  //   activeId,
+  //   insertProject,
+  //   insertTodo,
+  //   removeProject,
+  //   removeTodo,
+  //   print,
+  //   getTodoByProject,
+  //   findProject,
+  //   getActiveId,
+  //   setActiveId,
+  //   isEmpty,
+  //   toggleTodoDone,
+  // };
 };
 
-export const data = datalist();
-localStorage.setItem("projectList", JSON.stringify(data.projectList));
-localStorage.setItem("activeId", JSON.stringify(data.activeId));
-data.insertProject("Default");
+// export const data = datalist();
 // console.log(data.activeId);
