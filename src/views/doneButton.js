@@ -15,7 +15,6 @@ export function createDoneButton(todoObject) {
     data.toggleTodoDone(todoObject.id);
 
     // 3. Render Views
-    console.log(todoObject.done);
     updateMain();
   });
 

@@ -30,21 +30,14 @@ export const data = {
     ls.push(project);
     localStorage.setItem("activeId", JSON.stringify(this.activeId));
     localStorage.setItem("projectList", JSON.stringify(ls));
-    // console.log(activeId);
-    //return active;
   },
 
   insertTodo(projectId, title, priority, dueDate, description) {
-    // console.log(projectId);
     const { project, index } = this.findProject(projectId);
-    // console.log(project);
     this.setActiveId(projectId);
     project.insertTodo(title, priority, dueDate, description);
 
     let ls = JSON.parse(localStorage.getItem("projectList"));
-    // console.log(ls);
-    // console.log(index);
-    //console.log(project.todoList[0]);
     ls[index].todoList.push(project.todoList.at(-1));
     localStorage.setItem("activeId", JSON.stringify(this.activeId));
     localStorage.setItem("projectList", JSON.stringify(ls));

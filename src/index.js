@@ -4,25 +4,23 @@ import { updateSidebar } from "./views/updateSidebar";
 import { updateSelect } from "./views/updateSelect";
 import { updateMain } from "./views/updateMain";
 
-//console.log(Project.prototype);
-
 if (localStorage.getItem("projectList") === null) {
   localStorage.setItem("projectList", JSON.stringify(data.projectList));
   localStorage.setItem("activeId", JSON.stringify(data.activeId));
-
-  //console.log(Object.getPrototypeOf(data.projectList[0]));
-  //projectPrototype = Object.getPrototypeOf(data.projectList[0]);
+  data.insertProject("Default");
 } else {
   const ls = JSON.parse(localStorage.getItem("projectList"));
   data.projectList = ls;
   const active = JSON.parse(localStorage.getItem("activeId"));
   data.setActiveId(active.id);
 
-  // restore the prototype recurstively
+  // restore the prototype recursively
   data.restorePrototype();
 }
 
-data.insertProject("Default");
+updateSidebar();
+updateMain();
+updateSelect();
 
 const openProjectModal = document.querySelector(".open-project-modal");
 const closeProjectModal = document.querySelector(".close-project-modal");
@@ -50,25 +48,6 @@ closeTodoModal.addEventListener("click", () => {
   todoModal.close();
 });
 
-const id = data.projectList[0].id;
-
-data.insertTodo(id, "lorem", "high", "ipsum", "dolor");
-data.insertTodo(id, "abc", "medium", "def", "ghi");
-data.insertTodo(id, "sleep", "low", "lorem isum dolor", "no time to sleep");
-
-//data.print();
-
-data.insertProject("work life");
-data.insertProject("personal life");
-
-console.log(data);
-
-updateSidebar();
-updateMain();
-updateSelect();
-
-//data.print();
-
 // OK Function
 createTodoBtn.addEventListener("click", () => {
   // Step 1: Get Input
@@ -82,26 +61,26 @@ createTodoBtn.addEventListener("click", () => {
 
   // Step 2: Change Internal State
   data.insertTodo(projectId, title, priority, duedate, description);
-  data.print();
 
   // Step 3: Render Views
   updateSidebar();
   updateMain();
 });
 
-//data.print();
-
 // OK Function
-createProjectBtn.addEventListener("click", () => {
+createProjectBtn.addEventListener("click", (e) => {
   // Step 1: Get Input
   const projectName = document.querySelector("#project-name").value;
 
-  // Step 2: Change Internal State
-  data.insertProject(projectName);
-  //data.print();
-  // console.log(data.activeId.id);
-  // Step 3: Render views
-  updateSidebar();
-  updateSelect();
-  updateMain();
+  if (projectName === "") {
+    return;
+  } else {
+    // Step 2: Change Internal State
+    data.insertProject(projectName);
+
+    // Step 3: Render views
+    updateSidebar();
+    updateSelect();
+    updateMain();
+  }
 });
