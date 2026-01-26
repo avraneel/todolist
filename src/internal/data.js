@@ -99,23 +99,4 @@ export const data = {
     const { todo } = project.findTodo(todoId);
     todo.toggleDone();
   },
-
-  // return {
-  //   projectList,
-  //   activeId,
-  //   insertProject,
-  //   insertTodo,
-  //   removeProject,
-  //   removeTodo,
-  //   print,
-  //   getTodoByProject,
-  //   findProject,
-  //   getActiveId,
-  //   setActiveId,
-  //   isEmpty,
-  //   toggleTodoDone,
-  // };
 };
-
-// export const data = datalist();
-// console.log(data.activeId);
