@@ -7,7 +7,7 @@ export const data = {
   },
 
   isEmpty() {
-    if (projectList.length == 0) {
+    if (this.projectList.length == 0) {
       return true;
     } else {
       return false;
@@ -52,8 +52,8 @@ export const data = {
 
   // removes project from list, only if list is non-empty
   removeProject(id) {
-    const { index } = findProject(id);
-    if (isEmpty()) {
+    const { index } = this.findProject(id);
+    if (this.isEmpty()) {
       console.log("Cannot delete from empty project list!");
       return 2;
     } else {
@@ -65,7 +65,7 @@ export const data = {
   },
 
   removeTodo(projectId, todoId) {
-    const { project, index } = findProject(projectId);
+    const { project, index } = this.findProject(projectId);
     project.removeTodo(todoId);
     localStorage.setItem("projectList", JSON.stringify(this.projectList));
   },
