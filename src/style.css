@@ -2,6 +2,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  padding: 0;
 }
 
 *:not(dialog) {
@@ -52,17 +53,17 @@ header {
 
 .sidebar {
   border-right: 1px solid black;
-  padding: 1rem 5rem 1rem 1rem;
-}
-
-.content {
-  padding: 1rem 4rem;
+  padding: 1rem 5rem 1rem 0.3rem;
 }
 
 main {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1rem;
+  padding: 1rem;
+}
+
+header {
+  padding: 2rem;
+  font-size: 1.5rem;
+  border-bottom: 1px solid black;
 }
 
 .high {
@@ -79,4 +80,9 @@ main {
 
 .done {
   border: 1px solid green;
+}
+
+h3 {
+  font-size: 2rem;
+  text-align: center;
 }

@@ -32,6 +32,8 @@ const closeTodoModal = document.querySelector(".close-todo-modal");
 const todoModal = document.querySelector(".todo-modal");
 const createTodoBtn = document.querySelector(".create-todo-btn");
 
+const clearLocalBtn = document.querySelector(".clear-local-btn");
+
 openProjectModal.addEventListener("click", () => {
   projectModal.showModal();
 });
@@ -59,12 +61,16 @@ createTodoBtn.addEventListener("click", () => {
   const duedate = document.querySelector("#duedate").value;
   const description = document.querySelector("#description").value;
 
-  // Step 2: Change Internal State
-  data.insertTodo(projectId, title, priority, duedate, description);
+  if (title === "" || duedate === "") {
+    return;
+  } else {
+    // Step 2: Change Internal State
+    data.insertTodo(projectId, title, priority, duedate, description);
 
-  // Step 3: Render Views
-  updateSidebar();
-  updateMain();
+    // Step 3: Render Views
+    updateSidebar();
+    updateMain();
+  }
 });
 
 // OK Function
@@ -83,4 +89,9 @@ createProjectBtn.addEventListener("click", (e) => {
     updateSelect();
     updateMain();
   }
+});
+
+clearLocalBtn.addEventListener("click", () => {
+  localStorage.clear();
+  alert("Local Storage Cleared!");
 });
