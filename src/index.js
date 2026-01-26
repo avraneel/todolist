@@ -66,6 +66,7 @@ createTodoBtn.addEventListener("click", () => {
   data.print();
 
   // Step 3: Render Views
+  updateSidebar();
   updateMain();
 });
 

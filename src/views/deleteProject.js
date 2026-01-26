@@ -16,8 +16,6 @@ export function deleteProject(projectId) {
       const id = deleteProjectButton.id;
       data.removeProject(id);
       updateSidebar();
-      console.log(data.getActiveId());
-      console.log(id);
       if (data.getActiveId() === id) {
         data.setActiveId(data.projectList[0].id);
       }
