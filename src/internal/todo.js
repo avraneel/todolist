@@ -8,8 +8,8 @@ export class Todo {
     this.id = crypto.randomUUID();
   }
 
-  markDone() {
-    this.done = true;
+  toggleDone() {
+    this.done = this.done === false ? true : false;
   }
 
   print() {

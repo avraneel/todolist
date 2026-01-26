@@ -1,4 +1,5 @@
 import { createDeleteButton } from "./deleteTodo";
+import { createDoneButton } from "./doneButton";
 import { data } from "../internal/data";
 
 export function createTodoElement(todoObject) {
@@ -25,9 +26,26 @@ export function createTodoElement(todoObject) {
   const date = document.createElement("div");
   date.textContent = `Due: ${todoObject.dueDate}`;
 
+  const doneStatus = document.createElement("div");
+
+  const doneButton = createDoneButton(todoObject);
   const deleteButton = createDeleteButton(projectId, todoObject.id);
 
-  todoDiv.append(descElement, priority, date, deleteButton);
+  if (todoObject.done) {
+    doneStatus.textContent = "Done";
+    todoDiv.classList.toggle("done");
+  } else {
+    doneStatus.textContent = "Not done";
+  }
+
+  todoDiv.append(
+    descElement,
+    priority,
+    date,
+    doneStatus,
+    doneButton,
+    deleteButton,
+  );
 
   return todoDiv;
 }

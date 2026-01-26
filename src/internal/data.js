@@ -89,7 +89,12 @@ const datalist = () => {
   };
 
   // markdone
-  const markDone = () => {};
+  const toggleTodoDone = (todoId) => {
+    const pId = activeId.id;
+    const { project } = findProject(pId);
+    const { todo } = project.findTodo(todoId);
+    todo.toggleDone();
+  };
 
   return {
     projectList,
@@ -104,6 +109,7 @@ const datalist = () => {
     getActiveId,
     setActiveId,
     isEmpty,
+    toggleTodoDone,
   };
 };
 
