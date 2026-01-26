@@ -5,6 +5,7 @@ export class Project {
     this.name = name;
     this.id = crypto.randomUUID();
     this.todoList = [];
+    // localStorage.setItem(this.id, this.todoList);
   }
 
   isEmpty() {

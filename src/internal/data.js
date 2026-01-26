@@ -23,14 +23,15 @@ const datalist = () => {
 
   const insertProject = (name) => {
     const project = new Project(name);
-    activeId.id = project.id;
     projectList.push(project);
+    setActiveId(project.id);
     // console.log(activeId);
     //return active;
   };
 
-  const insertTodo = (projectdId, title, priority, dueDate, description) => {
-    const { project } = findProject(projectdId);
+  const insertTodo = (projectId, title, priority, dueDate, description) => {
+    const { project } = findProject(projectId);
+    setActiveId(projectId);
     project.insertTodo(title, priority, dueDate, description);
   };
 
@@ -65,6 +66,14 @@ const datalist = () => {
     return project.todoList;
   };
 
+  const getActiveId = () => {
+    return activeId.id;
+  };
+
+  const setActiveId = (id) => {
+    activeId.id = id;
+  };
+
   // markdone
   const markDone = () => {};
 
@@ -77,9 +86,15 @@ const datalist = () => {
     removeTodo,
     print,
     getTodoByProject,
+    findProject,
+    getActiveId,
+    setActiveId,
+    isEmpty,
   };
 };
 
 export const data = datalist();
 data.insertProject("Default");
+localStorage.setItem("projectList", JSON.stringify(data.projectList));
+localStorage.setItem("activeId", JSON.stringify(data.activeId));
 // console.log(data.activeId);

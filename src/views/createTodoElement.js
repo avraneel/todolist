@@ -1,6 +1,9 @@
 import { createDeleteButton } from "./deleteTodo";
+import { data } from "../internal/data";
 
-export function createTodoElement(projectId, todoObject) {
+export function createTodoElement(todoObject) {
+  const projectId = data.getActiveId();
+
   const todoDiv = document.createElement("div");
   todoDiv.id = todoObject.id;
   todoDiv.classList.toggle("todo");

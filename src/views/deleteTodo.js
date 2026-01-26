@@ -15,7 +15,7 @@ export function createDeleteButton(projectId, todoId) {
     const projectId = deleteButton.classList[1];
 
     data.removeTodo(projectId, todoId);
-    updateMain(projectId);
+    updateMain();
   });
 
   return deleteButton;

@@ -37,15 +37,15 @@ data.insertTodo(id, "abc", 1, "def", "ghi");
 
 //data.print();
 
-//data.insertProject("work life");
-//data.insertProject("personal life");
+data.insertProject("work life");
+data.insertProject("personal life");
 
 //console.log(data.listProjects());
 
 //console.log(data.getTodoByProject(id));
 
 updateSidebar();
-updateMain(id);
+updateMain();
 updateSelect();
 
 //data.print();
@@ -66,7 +66,7 @@ createTodoBtn.addEventListener("click", () => {
   data.print();
 
   // Step 3: Render Views
-  updateMain(projectId);
+  updateMain();
 });
 
 //data.print();
@@ -79,7 +79,7 @@ createProjectBtn.addEventListener("click", () => {
   // Step 2: Change Internal State
   data.insertProject(projectName);
   //data.print();
-  console.log(data.activeId);
+  // console.log(data.activeId.id);
   // Step 3: Render views
   updateSidebar();
   updateSelect();
