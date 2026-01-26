@@ -92,6 +92,13 @@ export const data = {
     this.activeId.id = id;
   },
 
+  restorePrototype() {
+    this.projectList.forEach((project) => {
+      project = Object.setPrototypeOf(project, Project.prototype);
+      project.restorePrototype();
+    });
+  },
+
   // markdone
   toggleTodoDone(todoId) {
     const pId = this.activeId.id;

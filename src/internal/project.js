@@ -36,6 +36,12 @@ export class Project {
     return this.todoList.splice(index, 1);
   }
 
+  restorePrototype() {
+    this.todoList.forEach((todo) => {
+      todo = Object.setPrototypeOf(todo, Todo.prototype);
+    });
+  }
+
   print() {
     console.log(`
       project name = ${this.name}

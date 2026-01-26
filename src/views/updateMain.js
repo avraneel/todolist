@@ -8,7 +8,6 @@ export function updateMain() {
   const id = data.getActiveId();
 
   const h3 = document.createElement("h3");
-  console.log(data.findProject(id));
   h3.textContent = data.findProject(id).project.name;
 
   main.appendChild(h3);

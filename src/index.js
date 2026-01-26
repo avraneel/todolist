@@ -3,35 +3,24 @@ import { data } from "./internal/data";
 import { updateSidebar } from "./views/updateSidebar";
 import { updateSelect } from "./views/updateSelect";
 import { updateMain } from "./views/updateMain";
-import { Project } from "./internal/project";
 
 //console.log(Project.prototype);
 
-// if (localStorage.getItem("projectList") === null) {
-//   // If first time loading, store the prototype
-//   console.log("here 1");
+if (localStorage.getItem("projectList") === null) {
+  localStorage.setItem("projectList", JSON.stringify(data.projectList));
+  localStorage.setItem("activeId", JSON.stringify(data.activeId));
 
-//   localStorage.setItem("projectList", JSON.stringify(data.projectList));
-//   localStorage.setItem("activeId", JSON.stringify(data.activeId));
-//
+  //console.log(Object.getPrototypeOf(data.projectList[0]));
+  //projectPrototype = Object.getPrototypeOf(data.projectList[0]);
+} else {
+  const ls = JSON.parse(localStorage.getItem("projectList"));
+  data.projectList = ls;
+  const active = JSON.parse(localStorage.getItem("activeId"));
+  data.setActiveId(active.id);
 
-//   //console.log(Object.getPrototypeOf(data.projectList[0]));
-//   //projectPrototype = Object.getPrototypeOf(data.projectList[0]);
-// } else {
-//   console.log("here 2");
-//   const ls = JSON.parse(localStorage.getItem("projectList"));
-//   data.projectList = ls;
-//   const active = JSON.parse(localStorage.getItem("activeId"));
-//   data.setActiveId(active.id);
-
-//   //console.log(Object.getPrototypeOf(data.projectList[0]));
-//   //console.log(Project.prototype);
-//   //console.log(projectPrototype);
-//   data.projectList.forEach((project) => {
-//     project = Object.setPrototypeOf(project, Project.prototype);
-//   });
-//   console.log(data.projectList[0]);
-// }
+  // restore the prototype recurstively
+  data.restorePrototype();
+}
 
 data.insertProject("Default");
 
